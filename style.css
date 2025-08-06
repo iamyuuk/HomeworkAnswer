@@ -1,0 +1,131 @@
+/* style.css */
+
+/* 基础布局 */
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+header {
+  padding: 0.5em 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-header);
+  color: var(--text-header);
+  position: relative;
+}
+
+#menu-toggle {
+  display: none;
+  font-size: 1.5em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-header);
+}
+
+main {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+#file-list {
+  width: 200px;
+  background: var(--bg-sidebar);
+  padding: 1em;
+  overflow-y: auto;
+  border-right: 1px solid #ccc;
+}
+
+#file-list a {
+  display: block;
+  margin-bottom: 0.5em;
+  text-decoration: none;
+  color: var(--link);
+}
+
+#content {
+  flex: 1;
+  padding: 1em;
+  overflow-y: auto;
+  background: var(--bg-content);
+  color: var(--text-content);
+  word-break: break-word;
+}
+
+code, pre {
+  background: #eee;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-family: monospace;
+}
+
+/* Light Theme */
+:root {
+  --bg-header: #f0f0f0;
+  --text-header: #222;
+  --bg-sidebar: #fafafa;
+  --bg-content: #ffffff;
+  --text-content: #222;
+  --link: #0645ad;
+}
+
+/* Dark Theme */
+body[data-theme='dark'] {
+  --bg-header: #1f1f1f;
+  --text-header: #fff;
+  --bg-sidebar: #2a2a2a;
+  --bg-content: #1e1e1e;
+  --text-content: #e0e0e0;
+  --link: #4ea1ff;
+}
+
+/* GitHub Theme */
+body[data-theme='github'] {
+  --bg-header: #24292e;
+  --text-header: #ffffff;
+  --bg-sidebar: #f6f8fa;
+  --bg-content: #ffffff;
+  --text-content: #24292e;
+  --link: #0969da;
+}
+
+/* 响应式设计，适配手机 */
+@media (max-width: 768px) {
+  #menu-toggle {
+    display: inline-block;
+  }
+
+  #file-list {
+    position: fixed;
+    top: 3.5em; /* header 高度 */
+    left: 0;
+    width: 70vw;
+    max-width: 300px;
+    height: calc(100vh - 3.5em);
+    background: var(--bg-sidebar);
+    padding: 1em;
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    border-right: 1px solid #ccc;
+  }
+
+  #file-list.show {
+    transform: translateX(0);
+  }
+
+  main {
+    flex-direction: column;
+  }
+
+  #content {
+    padding: 1em 0.5em;
+  }
+}

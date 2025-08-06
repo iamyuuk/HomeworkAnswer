@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Markdown Viewer</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>📘 Markdown Viewer</h1>
+    <button id="menu-toggle" aria-label="Toggle menu">☰</button>
+    <select id="theme-switcher">
+      <option value="light">🌞 Light</option>
+      <option value="dark">🌙 Dark</option>
+      <option value="github">🐙 GitHub</option>
+    </select>
+  </header>
+  <main>
+    <nav id="file-list">
+      <!-- Files will be listed here -->
+    </nav>
+    <section id="content">
+      <p>Select a Markdown file to view it.</p>
+    </section>
+  </main>
+  <script src="viewer.js"></script>
+</body>
+</html>
