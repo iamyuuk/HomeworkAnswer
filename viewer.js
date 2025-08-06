@@ -51,5 +51,18 @@ document.getElementById('menu-toggle').addEventListener('click', () => {
   fileList.classList.toggle('show');
 });
 
+// 图片点击放大预览功能
+document.addEventListener('click', function (e) {
+  if (e.target.tagName === 'IMG' && e.target.closest('#content')) {
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+    modalImg.src = e.target.src;
+    modal.classList.remove('hidden');
+  } else if (e.target.id === 'image-modal' || e.target.classList.contains('overlay')) {
+    document.getElementById('image-modal').classList.add('hidden');
+  }
+});
+
+
 // 启动加载
 loadFileList();
