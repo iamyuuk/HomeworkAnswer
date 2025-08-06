@@ -129,3 +129,8 @@ body[data-theme='github'] {
     padding: 1em 0.5em;
   }
 }
+
+#content img {
+  width: 5%;
+  height: auto;
+}
