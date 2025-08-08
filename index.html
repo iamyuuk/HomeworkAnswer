@@ -9,18 +9,17 @@
 </head>
 <body>
   <header>
-  <div class="header-left">
-    <h1 id="page-title">📘 Markdown Viewer</h1>
-  </div>
-  <div class="header-right">
+  <h1>📘 21班作业答案分享</h1>
+  <button id="menu-toggle">📂 打开菜单</button>
+  <span id="current-file" style="font-size: 0.9em; color: gray;"></span>
+  <select id="theme-switcher">
     <a href="https://github.com/iamyuuk/HomeworkAnswer" target="_blank" class="github-link">在Github上查看该网站源码</a>
-    <select id="theme-switcher">
-      <option value="light">🌞 Light</option>
-      <option value="dark">🌙 Dark</option>
-      <option value="github">🐙 GitHub</option>
-    </select>
-  </div>
+    <option value="light">🌞 Light</option>
+    <option value="dark">🌙 Dark</option>
+    <option value="github">🐙 GitHub</option>
+  </select>
 </header>
+
   <main>
     <nav id="file-list">
       <!-- Files will be listed here -->
@@ -29,18 +28,14 @@
       <p>列表中有作业</p>
     </section>
   </main>
-
-  <footer>
-  <p>© 2025 YuuK. 本项目用于展示 Markdown 学习资料，仅供学习交流使用。</p>
-</footer>
-
-
   <script src="viewer.js"></script>
   <!-- Image Preview Overlay -->
 <div id="image-modal" class="hidden">
   <div class="overlay"></div>
   <img id="modal-img" src="" alt="Preview" />
 </div>
-
+  <footer>
+  <p>© 2025 YuuK. 本项目用于展示 Markdown 学习资料，仅供学习交流使用。</p>
+</footer>
 </body>
 </html>

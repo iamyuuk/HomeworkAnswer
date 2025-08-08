@@ -1,5 +1,3 @@
-// viewer.js
-
 // 加载文件列表
 async function loadFileList() {
   try {
@@ -12,15 +10,17 @@ async function loadFileList() {
       const link = document.createElement('a');
       link.href = '#';
       link.textContent = file;
+      link.setAttribute('data-filename', file); // ✅ 添加高亮识别用属性
+
       link.onclick = () => {
         loadMarkdown(file);
         highlightSelectedFile(file);
-        // 移动端点击后隐藏菜单
         if (window.innerWidth <= 768) {
           listContainer.classList.remove('show');
         }
         return false;
       };
+
       listContainer.appendChild(link);
     });
   } catch (e) {
@@ -36,9 +36,28 @@ async function loadMarkdown(filename) {
     const text = await res.text();
     const html = marked.parse(text);
     document.getElementById('content').innerHTML = html;
+
+    // ✅ 显示当前文件名
+    document.title = filename + ' - Markdown Viewer';
+    const currentFile = document.getElementById('current-file');
+    if (currentFile) {
+      currentFile.textContent = filename;
+    }
   } catch (e) {
     document.getElementById('content').innerHTML = `<p>加载文件失败: ${filename}</p>`;
   }
+}
+
+// 高亮当前选中的文件
+function highlightSelectedFile(filename) {
+  const fileLinks = document.querySelectorAll('#file-list a');
+  fileLinks.forEach(link => {
+    if (link.getAttribute('data-filename') === filename) {
+      link.classList.add('selected');
+    } else {
+      link.classList.remove('selected');
+    }
+  });
 }
 
 // 主题切换
@@ -54,7 +73,7 @@ document.getElementById('menu-toggle').addEventListener('click', () => {
 
 // 图片点击放大预览功能
 document.addEventListener('click', function (e) {
-  if (e.target.tagName === 'IMG' && e.target.closest('#content')) {
+  if (e.target.tagName.toLowerCase() === 'img' && e.target.closest('#content')) {
     const modal = document.getElementById('image-modal');
     const modalImg = document.getElementById('modal-img');
     modalImg.src = e.target.src;
@@ -63,19 +82,6 @@ document.addEventListener('click', function (e) {
     document.getElementById('image-modal').classList.add('hidden');
   }
 });
-
-function highlightSelectedFile(filename) {
-  const fileLinks = document.querySelectorAll('#file-list a');
-  fileLinks.forEach(link => {
-    if (link.getAttribute('data-filename') === filename) {
-      link.classList.add('selected');
-    } else {
-      link.classList.remove('selected');
-    }
-  });
-}
-
-
 
 // 启动加载
 loadFileList();
