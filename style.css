@@ -176,3 +176,25 @@ body[data-theme='github'] {
   border-left: 4px solid #007bff;
   padding-left: 0.5em;
 }
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+}
+
+.github-link {
+  margin-right: 1em;
+  text-decoration: none;
+  background-color: #24292e;
+  color: white;
+  padding: 0.4em 0.8em;
+  border-radius: 6px;
+  font-size: 0.9em;
+  transition: background-color 0.2s ease;
+}
+
+.github-link:hover {
+  background-color: #444c56;
+}
