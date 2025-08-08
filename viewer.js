@@ -83,5 +83,31 @@ document.addEventListener('click', function (e) {
   }
 });
 
+
+async function loadGitHubInfo() {
+  try {
+    const res = await fetch("https://api.github.com/repos/iamyuuk/HomeworkAnswer/commits");
+    const commits = await res.json();
+    if (Array.isArray(commits) && commits.length > 0) {
+      const latest = commits[0];
+      const date = new Date(latest.commit.committer.date).toLocaleDateString();
+      const message = latest.commit.message;
+      const author = latest.commit.committer.name;
+
+      document.getElementById('github-info').innerHTML =
+        `🔄 最近更新：${date} by ${author}<br>📄 最近提交信息：${message}`;
+    }
+  } catch (e) {
+    document.getElementById('github-info').innerText = '⚠️ 无法获取 GitHub 信息';
+    console.error('GitHub API 获取失败:', e);
+  }
+}
+
+
+
+
 // 启动加载
 loadFileList();
+document.addEventListener("DOMContentLoaded", () => {
+  loadGitHubInfo();
+});

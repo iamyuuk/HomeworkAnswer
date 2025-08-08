@@ -6,6 +6,30 @@
   <title>21班作业答案分享</title>
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- KaTeX CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+
+<!-- KaTeX JS -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"
+        data-mathml="true"
+        data-delimiters='[{"left":"$$","right":"$$","display":true},{"left":"\\(","right":"\\)","display":false}]'>
+</script>
+<!-- MathJax -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],      // 支持 $...$ 和 \(...\) 行内公式
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]     // 支持 $$...$$ 和 \[...\] 块级公式
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+
 </head>
 <body>
   <header>
@@ -36,6 +60,7 @@
 </div>
   <footer>
   <p>© 2025 YuuK. 本项目用于展示 Markdown 学习资料，仅供学习交流使用。</p>
+  <div id="github-info">🔄 正在获取 GitHub 更新信息...</div>
 </footer>
 </body>
 </html>
