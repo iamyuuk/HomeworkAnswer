@@ -14,6 +14,7 @@ async function loadFileList() {
       link.textContent = file;
       link.onclick = () => {
         loadMarkdown(file);
+        highlightSelectedFile(file);
         // 移动端点击后隐藏菜单
         if (window.innerWidth <= 768) {
           listContainer.classList.remove('show');
@@ -62,6 +63,18 @@ document.addEventListener('click', function (e) {
     document.getElementById('image-modal').classList.add('hidden');
   }
 });
+
+function highlightSelectedFile(filename) {
+  const fileLinks = document.querySelectorAll('#file-list a');
+  fileLinks.forEach(link => {
+    if (link.getAttribute('data-filename') === filename) {
+      link.classList.add('selected');
+    } else {
+      link.classList.remove('selected');
+    }
+  });
+}
+
 
 
 // 启动加载

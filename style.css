@@ -169,3 +169,10 @@ body[data-theme='github'] {
   top: 0;
   left: 0;
 }
+
+#file-list a.selected {
+  background-color: var(--selected-bg, #d0ebff);
+  font-weight: bold;
+  border-left: 4px solid #007bff;
+  padding-left: 0.5em;
+}
